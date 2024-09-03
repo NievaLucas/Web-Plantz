@@ -1,0 +1,27 @@
+{% extends "extends.html" %}
+
+{% block body %}
+
+    <div>
+        <h1>Iniciar Sesion</h1>
+    </div>
+
+   <div>
+        <form action="/IniciarSesion" method="post">
+            <input type="text" name="userDB" placeholder="Usuario:">
+            <input type="text" name="passwordDB" placeholder="Contraseña">
+            <button name="sessionBD">Ingresar</button>
+        </form>
+   </div>
+
+<div>
+    <p>
+        Si no tiene cuenta
+    </p>
+</div>
+
+<div>
+    <a href="{{ url_for('registers_blueprint.registers') }} ">Registrarse</a>
+</div>
+
+{% endblock %}

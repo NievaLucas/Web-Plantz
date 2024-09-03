@@ -1,0 +1,32 @@
+{% extends "extends.html" %}
+
+{% block body %}
+
+    <div>
+        <h1>
+            "Registrarse"
+        </h1>
+    </div>
+
+    <div>
+        <form action="/Registro" method="POST">
+            <div>
+                <input type="text" name="name" id="form_name" placeholder="Nombre:">
+                <input type="text" name="surname" id="form_surname" placeholder="Apellido:">
+            </div> <br>
+            <div>
+                <input type="email" name="gmail" id="form_email" placeholder="Gmail:">
+            </div> <br>
+            <div>
+                <input type="text" name="user" id="form_user" placeholder="Usuario:">
+            </div> <br>
+            <div>
+                <input type="password" name="password" id="form_password" placeholder="Contraseña">
+            </div> <br>
+
+            <button name="register">Registrarse</button>
+
+        </form>
+    </div>
+
+{% endblock %}
