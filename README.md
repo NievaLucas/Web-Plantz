@@ -11,7 +11,7 @@ env\Scripts\activate
 Si este paso salio bien, a la izquierda de la raiz del proyecto deberia aparecer el siguiente mensaje: (env)
 Este indica que esta activado el entorno virtual
 
-Ahora tenemos que instalar los frameworks que se usan en el proyecto, estos estan en el archivo "requirements.txt" y se instala todo con un comando(Funcionan de igual manera en Linux y Windows):
+Ahora tenemos que instalar los frameworks que se usan en el proyecto, estos se encuentran en el archivo "requirements.txt" y se instala todo con un comando(Funcionan de igual manera en Linux y Windows):
 
 pip install requirements.txt
 
