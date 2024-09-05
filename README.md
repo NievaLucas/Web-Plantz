@@ -13,7 +13,7 @@ Este indica que esta activado el entorno virtual
 
 Ahora tenemos que instalar los frameworks que se usan en el proyecto, estos se encuentran en el archivo "requirements.txt" y se instala todo con un comando(Funcionan de igual manera en Linux y Windows):
 
-pip install requirements.txt
+pip install -r requirements.txt
 
 Como paso final para ejecutar el proyecto, correr la aplicacion con el comando:
 
