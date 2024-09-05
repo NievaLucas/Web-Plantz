@@ -1,5 +1,7 @@
-from src.database.userDB import get_infoUsers_db
+from src.database.userDB import get_infoUsers_db, close_infoUsers_db
 
-cursorUsers = get_infoUsers_db().cursor()
-
-commitUsers = get_infoUsers_db().commit()
+def init_user_db(app):
+    with app.app_context():
+        db = get_infoUsers_db()
+        
+        close_infoUsers_db()

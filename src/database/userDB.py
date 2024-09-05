@@ -1,15 +1,13 @@
 import sqlite3
-from flask import g, current_app
+from flask import g
 
-def get_infoUsers_db() :
-    db = getattr(g, '_database', None)
-    if db is None:
-        db = g._database = sqlite3.connect('/data/infoUser.db')
-    return db
+def get_infoUsers_db():
+    if 'db' not in g:
+        g.db = sqlite3.connect('/data/infoUser.db')
+        g.db.row_factory = sqlite3.Row
+    return g.db
 
-@current_app.teardown_appcontext
-def close_infoUsers_db() :
-    with current_app().app_context():
-        db = getattr(g, '_database', None)
-        if db is not None:
-            db.close()
+def close_infoUsers_db():
+    db = g.pop('db', None)
+    if db is not None:
+        db.close()
