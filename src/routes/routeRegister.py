@@ -9,11 +9,12 @@ def registers() :
         name = request.form["name"]
         surname = request.form["surname"]
         gmail = request.form["gmail"]
-        user = request.form["user"]
-        password = request.form["password"]
-        insertToBD = {name, surname, gmail, user, password}
-        init_user_db().db.execute("INSERT INTO infoUser (Nombre, Apellido, Gmail, Usuario, Contraseña) VALUES (?, ?, ?, ?, ?)", insertToBD)
-        init_user_db().db.commit()
+        newUser = request.form["user"]
+        newPassword = request.form["password"]
+        insertToBD = (name, surname, gmail, newUser, newPassword)
+        cursor = init_user_db().db.cursor()
+        cursor.execute("INSERT INTO usuarios (Nombre, Apellido, Gmail, Usuario, Contraseña) VALUES (?, ?, ?, ?, ?)", insertToBD)
+        cursor.commit()
         return redirect(url_for('statistic'))
     
     return render_template('/auth/register.html')
