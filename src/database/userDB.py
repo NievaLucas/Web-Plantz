@@ -3,7 +3,7 @@ from flask import g
 
 def get_infoUsers_db():
     if 'db' not in g:
-        g.db = sqlite3.connect('/data/infoUser.db')
+        g.db = sqlite3.connect('data/infoUser.db')
     return g.db
 
 def close_infoUsers_db():
