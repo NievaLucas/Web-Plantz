@@ -14,7 +14,7 @@ def registers() :
         insertToBD = (name, surname, gmail, newUser, newPassword)
         cursor = init_user_db().db.cursor()
         cursor.execute("INSERT INTO usuarios (Nombre, Apellido, Gmail, Usuario, Contraseña) VALUES (?, ?, ?, ?, ?)", insertToBD)
-        cursor.commit()
+        init_user_db().db.commit()
         return redirect(url_for('statistic'))
     
     return render_template('/auth/register.html')
