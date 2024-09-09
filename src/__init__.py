@@ -7,9 +7,9 @@ app = Flask(__name__, template_folder="templates")
 
 def createApp() :
     
-    app.register_blueprint(routeRegister.main, method = ["POST"], url_prefix='/Registro')
-    app.register_blueprint(routeSession.main, method = ["POST"], url_prefix='/IniciarSesion')
-    app.register_blueprint(routeStatistic.main, method = ["GET", "POST"], url_prefix='/Estadisticas')
+    app.register_blueprint(routeRegister.main, methods = ["POST"], url_prefix='/Registro')
+    app.register_blueprint(routeSession.main, methods = ["POST"], url_prefix='/IniciarSesion')
+    app.register_blueprint(routeStatistic.main, methods = ["GET", "POST"], url_prefix='/Estadisticas')
     init_user_db(app)
 
     return app
