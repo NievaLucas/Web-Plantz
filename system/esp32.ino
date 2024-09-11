@@ -43,12 +43,13 @@ void loop() {
   SensorHL69 = analogRead(PinHL69);
   HUMEDAD = map(SensorHL69, 1023, 0, 0, 100);
 
+// Programacion del WiFi
   if (WiFi.status() == WL_CONNECTED) {
 
     HTTPClient http;
     String datosPOST = "Temperatura=" + String(TEMPERATURA, 1) + "&Humedad=" + String(HUMEDAD);
 
-    // http.begin();
+    http.begin(""" LINK DEL HOSTING DE SQLITE """);
     http.addHeader("Content-Type", "application/x-www-form-urlencoded");
 
     int codigoRepuesta = http.POST(datosPOST);
