@@ -1,4 +1,5 @@
 from flask import Blueprint, request, render_template, redirect, url_for
+from src.database.userDB import connUser
 
 main = Blueprint("registers_blueprint", __name__)
 
@@ -12,6 +13,10 @@ def registers() :
         newPassword = request.form["password"]
         insertToBD = (name, surname, gmail, newUser, newPassword)
     
-        return redirect(url_for('statistic'))
-    
-    return render_template('/auth/register.html')
+        cursor = connUser.cursor()
+        cursor.execute("INSERT INTO usuarios (Nombre, Apellido, Gmail, Usuario, Contraseña) VALUES (?, ?, ?, ?, ?)", insertToBD)
+        connUser.commit()
+        
+        return redirect(url_for('esp32'))
+    else :
+        return render_template('/auth/register.html')
