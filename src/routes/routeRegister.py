@@ -12,9 +12,11 @@ def registers() :
         newUser = request.form["user"]
         newPassword = request.form["password"]
         insertToBD = (name, surname, gmail, newUser, newPassword)
-    
+
+        sql = "INSERT INTO usuarios (Nombre, Apellido, Gmail, Usuario, Contraseña) VALUES (?, ?, ?, ?, ?)", insertToBD
+
         cursor = connUser.cursor()
-        cursor.execute("INSERT INTO usuarios (Nombre, Apellido, Gmail, Usuario, Contraseña) VALUES (?, ?, ?, ?, ?)", insertToBD)
+        cursor.execute(sql)
         connUser.commit()
         
         return redirect(url_for('esp32'))
