@@ -10,4 +10,4 @@ def login():
 
         return redirect(url_for('statistic_blueprint.esp32'))
     else :
-        return render_template('auth/session.html')
+        return render_template('auth/login.html')
