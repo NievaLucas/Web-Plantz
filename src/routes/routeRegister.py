@@ -13,11 +13,11 @@ def registers() :
         newPassword = request.form["password"]
         insertToBD = (name, surname, gmail, newUser, newPassword)
         
-        #sql = "INSERT INTO usuarios (Nombre, Apellido, Gmail, Usuario, Contraseña) VALUES (?, ?, ?, ?, ?)"
+        sql = "INSERT INTO usuarios (Nombre, Apellido, Gmail, Usuario, Contraseña) VALUES (%s, %s, %s, %s, %s)"
 
-        #cursor = connUser.cursor()
-        #cursor.execute(sql, insertToBD)
-        #connUser.commit()
+        cursor = connUser.cursor()
+        cursor.execute(sql, (insertToBD))
+        connUser.commit()
         
         return redirect(url_for('statistic_blueprint.esp32'))
     
