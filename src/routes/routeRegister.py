@@ -3,7 +3,7 @@ from src.database.userDB import connUser
 
 main = Blueprint("registers_blueprint", __name__)
 
-@main.route('/')
+@main.route('', methods = ["GET", "POST"])
 def registers() :
     if request.method == "POST":
         name = request.form["name"]
@@ -12,13 +12,13 @@ def registers() :
         newUser = request.form["user"]
         newPassword = request.form["password"]
         insertToBD = (name, surname, gmail, newUser, newPassword)
-
-        sql = "INSERT INTO usuarios (Nombre, Apellido, Gmail, Usuario, Contraseña) VALUES (?, ?, ?, ?, ?)", insertToBD
-
-        cursor = connUser.cursor()
-        cursor.execute(sql)
-        connUser.commit()
         
-        return redirect(url_for('esp32'))
-    else :
-        return render_template('/auth/register.html')
+        #sql = "INSERT INTO usuarios (Nombre, Apellido, Gmail, Usuario, Contraseña) VALUES (?, ?, ?, ?, ?)"
+
+        #cursor = connUser.cursor()
+        #cursor.execute(sql, insertToBD)
+        #connUser.commit()
+        
+        return redirect(url_for('statistic_blueprint.esp32'))
+    
+    return render_template('/auth/register.html')
