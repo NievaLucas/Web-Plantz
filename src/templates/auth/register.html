@@ -9,7 +9,7 @@
     </div>
 
     <div>
-        <form action="/Registro" method="POST">
+        <form action="{{ url_for('registers_blueprint.registers') }} " method="POST">
             <div>
                 <input type="text" name="name" class="form_name" placeholder="Nombre:">
                 <input type="text" name="surname" class="form_surname" placeholder="Apellido:">

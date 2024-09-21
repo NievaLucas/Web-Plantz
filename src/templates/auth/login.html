@@ -7,7 +7,7 @@
     </div>
 
    <div>
-        <form action="/IniciarSesion" method="POST">
+        <form action="{{ url_for('login_blueprint.login') }}" method="POST">
             <input type="text" name="userDB" placeholder="Usuario:">
             <input type="password" name="passwordDB" placeholder="Contraseña">
             <button name="sessionBD">Ingresar</button>
