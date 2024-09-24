@@ -8,7 +8,7 @@ def createApp() :
     
     app.register_blueprint(routeRegister.main, url_prefix='/Registro')
     app.register_blueprint(routeLogin.main, url_prefix='/IniciarSesion')
-    app.register_blueprint(routeStatistic.main, methods = ["GET", "POST"], url_prefix='/Estadisticas')
+    app.register_blueprint(routeStatistic.main, url_prefix='/Estadisticas')
 
     app.secret_key = "secret_key"
 
