@@ -1,6 +1,6 @@
 from flask import Blueprint, request, render_template, redirect, url_for
 from src.database.userDB import connUser
-from src.utils.security import hash_password
+# from src.utils.security import hash_password
 
 main = Blueprint("registers_blueprint", __name__)
 
@@ -12,7 +12,7 @@ def registers() :
         gmail = request.form["gmail"]
         newUser = request.form["user"]
         newPassword = request.form["password"]
-        insertToBD = (name, surname, gmail, newUser, hash_password(newPassword))
+        insertToBD = (name, surname, gmail, newUser, newPassword)
         
         sql = "INSERT INTO usuarios (Nombre, Apellido, Gmail, Usuario, Contraseña) VALUES (%s, %s, %s, %s, %s)"
 
