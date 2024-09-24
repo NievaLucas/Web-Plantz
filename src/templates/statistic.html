@@ -3,7 +3,7 @@
 {% block body %}
 
     <div>
-        <h2>Hola, !</h2>
+        <h2>¡Hola!</h2>
     </div>
 
     <div>
@@ -11,8 +11,31 @@
     </div>
 
     <div>
-        <input type="text" name="idEsp32" class="get_esp32" placeholder="ID del Producto:">
-        <button name="search">Buscar</button>
+        <form action="{{ url_for ('statistic_blueprint.esp32') }}", method="POST">
+            <input type="text" name="idEsp32" class="get_esp32" placeholder="ID del Producto:">
+            <button name="search">Buscar</button>
+        </form>
+    </div>
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Hora</th>
+                    <th>Temperatura</th>
+                    <th>Humedad</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for datos in datosEsp32 %}
+                <tr>
+                    <td>{{ datos.0 }}</td>
+                    <td>{{ datos.1 }}</t>
+                    <td>{{ datos.2 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 
 {% endblock %}
