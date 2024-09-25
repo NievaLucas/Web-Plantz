@@ -20,6 +20,7 @@ def login():
         if infoDB :
                 return redirect(url_for('statistic_blueprint.esp32'))  
         else :
-            flash("Hubo algun dato incorrecto")
+            flash("Algun dato es incorrecto")
+            return render_template('auth/login.html')
     else :
         return render_template('auth/login.html')
