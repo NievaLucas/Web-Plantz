@@ -1,5 +1,5 @@
 from flask import Blueprint, request, render_template, redirect, url_for
-from src.database.userDB import connUser
+from src.database.conectDB import db
 # from src.utils.security import hash_password
 
 main = Blueprint("registers_blueprint", __name__)
@@ -16,9 +16,9 @@ def registers() :
         
         sql = "INSERT INTO usuarios (Nombre, Apellido, Gmail, Usuario, Contraseña) VALUES (%s, %s, %s, %s, %s)"
 
-        cursor = connUser.cursor()
+        cursor = db.cursor()
         cursor.execute(sql, (insertToBD))
-        connUser.commit()
+        db.commit()
         
         return redirect(url_for('statistic_blueprint.esp32'))
     

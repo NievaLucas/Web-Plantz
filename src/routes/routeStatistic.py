@@ -1,5 +1,5 @@
-from flask import Blueprint, render_template, request
-from src.database.infoEspDB import connEsp32
+from flask import Blueprint, render_template, request, flash
+from src.database.conectDB import db
 
 main = Blueprint("statistic_blueprint", __name__)
 
@@ -10,14 +10,16 @@ def esp32():
 
         idProducto = request.form["idEsp32"] 
     
-        cursorEsp32 = connEsp32.cursor()
+        cursor = db.cursor()
         sql = "SELECT Hora, Temperatura, Humedad FROM esp32 WHERE idProducto = %s"    
-        cursorEsp32.execute(sql, (idProducto, ))
-        datosEsp32 = cursorEsp32.fetchall()
-        
-        datoslal = ("sas", "sas", "sas")
-        if idProducto == "sas" :
-            return render_template('statistic.html', datosEsp32 = datoslal)
+        cursor.execute(sql, (idProducto, ))
+        datosEsp32 = cursor.fetchall()
     
+        if datosEsp32 :
+            return render_template('statistic.html', datosEsp32 = datosEsp32)
+        else :
+            flash("Id inexistente")
+            return render_template('statistic.html')
+        
     else :
         return render_template('statistic.html')

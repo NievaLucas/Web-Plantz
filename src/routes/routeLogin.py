@@ -1,5 +1,5 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash
-from src.database.userDB import connUser
+from src.database.conectDB import db
 # from src.utils.security import check_password
 
 main = Blueprint("login_blueprint", __name__)
@@ -11,7 +11,7 @@ def login():
         password = request.form["passwordDB"]
         infoTuple = (user, password)
 
-        cursor = connUser.cursor()
+        cursor = db.cursor()
 
         sql = "SELECT Usuario, Contraseña FROM usuarios WHERE Usuario = %s AND Contraseña = %s"
         cursor.execute(sql, (infoTuple))
