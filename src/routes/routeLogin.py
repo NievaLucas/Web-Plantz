@@ -1,6 +1,5 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash
 from src.database.conectDB import db
-# from src.utils.security import check_password
 
 main = Blueprint("login_blueprint", __name__)
 

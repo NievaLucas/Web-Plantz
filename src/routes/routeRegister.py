@@ -1,6 +1,5 @@
 from flask import Blueprint, request, render_template, redirect, url_for
 from src.database.conectDB import db
-# from src.utils.security import hash_password
 
 main = Blueprint("registers_blueprint", __name__)
 
