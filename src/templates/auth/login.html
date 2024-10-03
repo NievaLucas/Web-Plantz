@@ -1,39 +1,42 @@
 {% extends "extends.html" %}
 
 {% block body %}
+<section class="formularioInicio">
+  <div>
+    <h1>Iniciar Sesion</h1>
+</div>
 
-    <div>
-        <h1>Iniciar Sesion</h1>
-    </div>
+<div >
+    <form action="{{ url_for('login_blueprint.login') }}" method="POST">
+        <input type="text" name="userDB" placeholder="Usuario:">
+        <input type="password" name="passwordDB" placeholder="Contraseña">
+        
+        {% with messages = get_flashed_messages() %} 
+          {% if messages %}
+            {% for message in messages %}
+            <div class="alertLogin alert-success alert-dismissible fade show" role="alert" id="alert-message">
+              <strong>{{ message }}</strong>
+            </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
 
-   <div>
-        <form action="{{ url_for('login_blueprint.login') }}" method="POST">
-            <input type="text" name="userDB" placeholder="Usuario:">
-            <input type="password" name="passwordDB" placeholder="Contraseña">
-            
-            {% with messages = get_flashed_messages() %} 
-              {% if messages %}
-                {% for message in messages %}
-                  <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong> {{ message }} </strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                  </div>
-                {% endfor %}
-              {% endif %}
-            {% endwith %}
 
-            <button name="sessionBD">Ingresar</button>
-        </form>
-   </div>
+        <button name="sessionBD">Ingresar</button>
+    </form>
+</div>
 
-    <div>
-        <p>
-            Si no tiene cuenta
-        </p>
-    </div>
+<div>
+    <p>
+        Si no tiene cuenta
+    </p>
+</div>
 
-    <div>
-        <a href="{{ url_for('registers_blueprint.registers') }} ">Registrarse</a>
-    </div>
+<div>
+    <a href="{{ url_for('registers_blueprint.registers') }} ">Registrarse</a>
+</div>
 
+</section>
+
+    
 {% endblock %}

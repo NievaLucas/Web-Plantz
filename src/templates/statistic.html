@@ -1,7 +1,7 @@
 {% extends "extends.html" %}
 
 {% block body %}
-
+<div class="textoBuscar">
     <div>
         <h2>¡Hola!</h2>
     </div>
@@ -10,6 +10,9 @@
         <p>Ingrese el ID de su producto para ver sus datos</p>
     </div>
 
+</div>
+
+    
     <div>
         <form action="{{ url_for ('statistic_blueprint.esp32') }}", method="POST">
             <input type="text" name="idEsp32" class="get_esp32" placeholder="ID del Producto:">
@@ -20,7 +23,7 @@
     {% with messages = get_flashed_messages() %} 
         {% if messages %}
             {% for message in messages %}
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <div class="alertTable alert-success alert-dismissible fade show" role="alert">
                     <strong> {{ message }} </strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>

@@ -7,16 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plantz</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Della+Respira&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
     <div>
         <nav>
-            <img src="../static/pics/PLantzLogo.png" alt="Logo Plantz">
-            <a href="{{ url_for('home') }}">HOME</a>
+            <img class="logo" src="../static/pics/PLantzLogo.png" alt="Logo Plantz">
+            <div class="navItems">
+              <a href="{{ url_for('home') }}">HOME</a>
             <a href="{{ url_for('us') }}">NOSOTROS</a>
-            <a href="{{ url_for('login_blueprint.login') }}">INICIAR SESION</a>
+            <a href="{{ url_for('login_blueprint.login') }}">INICIAR SESION</a>  
+            </div>
         </nav>
     </div>
 
