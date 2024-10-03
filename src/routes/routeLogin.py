@@ -16,10 +16,16 @@ def login():
         cursor.execute(sql, (infoTuple))
         infoDB = cursor.fetchall()
 
-        if infoDB :
-                return redirect(url_for('statistic_blueprint.esp32'))  
-        else :
-            flash("Algun dato es incorrecto")
-            return render_template('auth/login.html')
+        for i in infoTuple :
+            if i in "" :
+                flash("Los campos estan vacios")
+                return render_template('auth/login.html')
+            else :
+                if infoDB :
+                    return redirect(url_for('statistic_blueprint.esp32'))  
+                else :
+                    flash("Algun dato es incorrecto")
+                    return render_template('auth/login.html')
+
     else :
         return render_template('auth/login.html')
