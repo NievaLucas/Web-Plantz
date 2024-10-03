@@ -28,15 +28,6 @@ html, body {
 }
 
 
-/* 
-#344E41 verde oscuro
-#3A5A40 verde
-#588157 verde clario
-#A3B18A verde clarisimo
-#DAD7CD blanquito
-*/
-
-
 nav{
     background-color: #3A5A40;
     color: #DAD7CD;
@@ -124,6 +115,14 @@ form{
     background: radial-gradient(#A3B18A, #3A5A40);
 }
 
+.formularioRegistro form, .formularioRegistro div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    gap: 1rem;
+}
+
 .formularioInicio h1, .formularioRegistro h1{
     color: #DAD7CD;
 }
@@ -133,8 +132,8 @@ form{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 3% 10%;
-    gap: .625rem;
+    margin: 4% 10%;
+    gap: 1.25rem;
     
 }
 
@@ -213,7 +212,21 @@ tbody tr:hover {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     position: absolute;
     top: 12.5rem;
-    left: 25rem;
+    left: 27rem;
+}
+
+.alertReg {
+    width: 7%;
+    margin: auto;
+    border-radius: 0rem 3.125rem 0rem 3.125rem;
+    background-color: #588157;
+    color: #DAD7CD;
+    padding: 1.25rem 1rem;
+    text-align: center;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 12.5rem;
+    left: 23rem;
 }
 
 .alertTable {
