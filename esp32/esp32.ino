@@ -2,23 +2,31 @@
 #include <HTTPClient.h>
 
 // Declaracion de los pines
-int PinLM35 = 34;
-int PinHL69 = 35;
+#define PinLM35 35
+#define PinHL69 34
 
 // Variables que se usaran
-int SensorLM35;
+
+#define VOLTAJE 5000.0
+#define BITS 4096.0
+
+int SensorValueLM35;
+float miliVolt;
 float TEMPERATURA;
-float SensorHL69;
-int HUMEDAD;
+int SensorValueHL69;
+float HUMEDAD;
 
 const char* ssid = "TeleCentro-75ce";
 const char* password = "GNKJMWMWNZQJ";
 
-const char* id = "ML16"
+const char* id = "ML16";
 
 void setup() {
   delay(10);
   Serial.begin(115200);
+
+  pinMode(PinLM35, INPUT);
+  pinMode(PinHL69, INPUT);
 
   WiFi.begin(ssid, password);
 
@@ -36,22 +44,23 @@ void setup() {
 void loop() {
 
 // Programacion del LM35
-  SensorLM35 = analogRead(PinLM35);
-  TEMPERATURA = ((SensorLM35 * 5000.0) / 1023 ) / 10;
-  Serial.println(TEMPERATURA);
-  delay(2000);
+  SensorValueLM35 = analogRead(PinLM35);
+  miliVolt = SensorValueLM35 * (VOLTAJE / BITS);
+  TEMPERATURA = miliVolt / 10;
+  Serial.println(TEMPERATURA, 1);
 
 // Programacion del HL-69
-  SensorHL69 = analogRead(PinHL69);
-  HUMEDAD = map(SensorHL69, 1023, 0, 0, 100);
+  SensorValueHL69 = analogRead(PinHL69);
+  HUMEDAD = map(SensorValueHL69, 4095, 0, 0, 100);
+  Serial.println(HUMEDAD, 0);
 
 // Programacion del WiFi
   if (WiFi.status() == WL_CONNECTED) {
 
     HTTPClient http;
-    String datosPOST = "idProducto="+ String(id) +"Temperatura=" + String(TEMPERATURA, 1) + "&Humedad=" + String(HUMEDAD);
+    String datosPOST = "?idProducto="+ String(id) +"&Temperatura=" + (String(TEMPERATURA, 1) + " C°") + "&Humedad=" + (String(HUMEDAD, 0) + "%");
 
-    http.begin("""mysql://uqcmompsut59ejtf:rkXu5Hn2woBtLuEKKvlB@b6zjqfpwzcfppucybgpl-mysql.services.clever-cloud.com:3306/b6zjqfpwzcfppucybgpl""");
+    http.begin("sql10.freemysqlhosting.net");
     http.addHeader("Content-Type", "application/x-www-form-urlencoded");
 
     int codigoRepuesta = http.POST(datosPOST);
@@ -69,12 +78,12 @@ void loop() {
 
     } else {
 
-      Serial.print("ERROR, codigo:");
+      Serial.print("ERROR, codigo: ");
       Serial.println(codigoRepuesta);
 
     }
 
-    http.end()
+    http.end();
 
   } else {
 
@@ -82,6 +91,6 @@ void loop() {
 
   }
 
-  delay(15000);
+  delay(900000);
 
 }
