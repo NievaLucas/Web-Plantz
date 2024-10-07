@@ -11,7 +11,7 @@ def esp32():
         idProducto = request.form["idEsp32"] 
     
         cursor = db.cursor()
-        sql = "SELECT Hora, Temperatura, Humedad FROM esp32 WHERE idProducto = %s"    
+        sql = "SELECT Hora, Temperatura, Humedad FROM esp32 WHERE idProducto = %s ORDER BY id DESC"    
         cursor.execute(sql, (idProducto, ))
         datosEsp32 = cursor.fetchall()
     
