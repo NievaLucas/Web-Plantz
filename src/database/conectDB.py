@@ -1,5 +1,7 @@
+# Modulo conector con MySQL
 import mysql.connector
 
+# Variable con las credenciales para conectarse a la BBDD en la nube
 db = mysql.connector.connect(
 
     host = "sql10.freemysqlhosting.net",
