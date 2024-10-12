@@ -26,13 +26,16 @@ def registers() :
             return render_template('/auth/register.html')
         else :
             # Tupla a insertar en la base de datos
+            # Con la funcion "hash_password" creamos el hash para la nueva contraseña
             insertToDB = (name, surname, gmail, newUser, hash_password(newPassword))
-            # Sentencias de la base de datos
-            sql = "INSERT INTO usuarios (Nombre, Apellido, Gmail, Usuario, Contraseña) VALUES (%s, %s, %s, %s, %s)"
+            # Cursor para manejar la base de datos
             cursor = db.cursor()
-            cursor.execute(sql, (insertToDB))
+            # Sentencia SQL
+            sql = "INSERT INTO usuarios (Nombre, Apellido, Gmail, Usuario, Contraseña) VALUES (%s, %s, %s, %s, %s)"
+            cursor.execute(sql, (insertToDB)) # Insertamos la tupla en la base de datos
             db.commit()
             # Redireccionamos a la ruta de estadisticas si el registro fue exitoso
             return redirect(url_for('statistic_blueprint.esp32'))
     # Si el metodo es GET renderizamos la plantilla
-    return render_template('/auth/register.html')
+    else :
+        return render_template('/auth/register.html')
