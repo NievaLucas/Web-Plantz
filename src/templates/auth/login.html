@@ -1,16 +1,18 @@
 {% extends "extends.html" %}
 
 {% block body %}
+
 <section class="formularioInicio">
   <div>
     <h1>Iniciar Sesion</h1>
-</div>
+  </div>
 
-<div >
+  <div >
     <form action="{{ url_for('login_blueprint.login') }}" method="POST">
+        <input type= "hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input type="text" name="userDB" placeholder="Usuario:">
         <input type="password" name="passwordDB" placeholder="Contraseña">
-        
+
         {% with messages = get_flashed_messages() %} 
           {% if messages %}
             {% for message in messages %}
@@ -21,22 +23,20 @@
           {% endif %}
         {% endwith %}
 
-
         <button name="sessionBD">Ingresar</button>
     </form>
-</div>
+  </div>
 
-<div>
+  <div>
     <p>
-        Si no tiene cuenta
+      Si no tiene cuenta
     </p>
-</div>
+  </div>
 
-<div>
+  <div>
     <a href="{{ url_for('registers_blueprint.registers') }} ">Registrarse</a>
-</div>
+  </div>
 
 </section>
 
-    
 {% endblock %}
