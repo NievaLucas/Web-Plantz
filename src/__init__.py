@@ -1,18 +1,23 @@
+# Componentes que se utilizaran
+from decouple import config
 from flask import Flask, render_template
-
 from src.routes import routeLogin, routeRegister, routeStatistic
 
+# Declaracion de app
 app = Flask(__name__, template_folder="templates")
 
+# Funcion donde se registraran todos los blueprints
 def createApp() :
     
     app.register_blueprint(routeRegister.main, url_prefix='/Registro')
     app.register_blueprint(routeLogin.main, url_prefix='/IniciarSesion')
     app.register_blueprint(routeStatistic.main, url_prefix='/Estadisticas')
 
-    app.secret_key = "secret_key"
+    app.secret_key = "d8o&_m4don3i#eaen3!i*dwi8-60$ltekyl_uv_#9yi_1d+r=1"
 
     return app
+
+# Renderizados que no necesitan de una ruta propia, ya que no necesitan logica por detras
 
 @app.route('/')
 def home():
