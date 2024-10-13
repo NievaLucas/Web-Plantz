@@ -13,7 +13,7 @@ def createApp() :
     app.register_blueprint(routeLogin.main, url_prefix='/IniciarSesion')
     app.register_blueprint(routeStatistic.main, url_prefix='/Estadisticas')
 
-    app.secret_key = "d8o&_m4don3i#eaen3!i*dwi8-60$ltekyl_uv_#9yi_1d+r=1"
+    app.secret_key = config('SECRET_KEY')
 
     return app
 
