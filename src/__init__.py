@@ -6,13 +6,14 @@ from src.routes import routeLogin, routeRegister, routeStatistic
 # Declaracion de app
 app = Flask(__name__, template_folder="templates")
 
-# Funcion donde se registraran todos los blueprints
 def createApp() :
-    
+
+    # Registro de blueprints de cada ruta    
     app.register_blueprint(routeRegister.main, url_prefix='/Registro')
     app.register_blueprint(routeLogin.main, url_prefix='/IniciarSesion')
     app.register_blueprint(routeStatistic.main, url_prefix='/Estadisticas')
 
+    # Configuracion de llave secreta
     app.secret_key = config('SECRET_KEY')
 
     return app
