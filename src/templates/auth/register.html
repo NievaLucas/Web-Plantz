@@ -10,19 +10,12 @@
 
     <div>
         <form action="{{ url_for('registers_blueprint.registers') }} " method="POST">
-            <div>
-                <input type="text" name="name" class="form_name" placeholder="Nombre:">
-                <input type="text" name="surname" class="form_surname" placeholder="Apellido:">
-            </div> 
-            <div>
-                <input type="email" name="gmail" class="form_email" placeholder="Gmail:">
-            </div> 
-            <div>
-                <input type="text" name="user" class="form_user" placeholder="Usuario:">
-            </div> 
-            <div>
-                <input type="password" name="password" class="form_password" placeholder="Contraseña">
-            </div> 
+            <input type= "hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="text" name="name" class="form_name" placeholder="Nombre:">
+            <input type="text" name="surname" class="form_surname" placeholder="Apellido:">
+            <input type="email" name="gmail" class="form_email" placeholder="Gmail:">
+            <input type="text" name="user" class="form_user" placeholder="Usuario:">
+            <input type="password" name="password" class="form_password" placeholder="Contraseña">
 
             {% with messages = get_flashed_messages() %} 
                 {% if messages %}
@@ -33,7 +26,6 @@
                     {% endfor %}
                 {% endif %}
             {% endwith %}
-
 
             <button name="register">Registrarse</button>
 
