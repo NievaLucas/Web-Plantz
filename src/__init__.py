@@ -3,6 +3,7 @@ from decouple import config
 from flask import Flask, render_template
 from flask_wtf import CSRFProtect
 from src.routes import routeLogin, routeRegister, routeStatistic
+from src.routes.routeLogin import LoginManagerApp
 
 # Declaracion de app
 app = Flask(__name__, template_folder="templates")
@@ -22,6 +23,8 @@ def createApp() :
 
     # Inicializador de la proteccion
     csrf.init_app(app)
+
+    LoginManagerApp.init_app(app)
 
     return app
 
