@@ -1,10 +1,18 @@
 # Componentes que se utilizaran
 from flask import Blueprint, request, render_template, redirect, url_for, flash
+from flask_login import LoginManager, login_user
 from src.database.conectDB import db
+from src.models.modelsUser import User
 from src.utils.security import check_password
 
 # Definicion del Blueprint
 main = Blueprint("login_blueprint", __name__)
+
+LoginManagerApp = LoginManager()
+
+@LoginManagerApp.user_loader
+def load_user(id) :
+    return User.get_by_id(db, id)
 
 # Ruta y los metodos permitidos
 @main.route('', methods = ["GET", "POST"])
@@ -17,19 +25,22 @@ def login():
         # Cursor para manejar la base de datos
         cursor = db.cursor()
         # Sentencia SQL
-        sql = "SELECT Usuario, Contraseña FROM usuarios WHERE Usuario = %s"
+        sql = "SELECT id, Nombre, Usuario, Contraseña FROM usuarios WHERE Usuario = %s"
         cursor.execute(sql, (user,)) 
-        infoDB = cursor.fetchall() #Obtenemos los datos pedidos
-        # Comprobacion de si el usuario existe o es incorrecto
-        if len(infoDB) > 0 and infoDB[0]:
+        row = cursor.fetchone() #Obtenemos los datos pedidos
+        # Comprobacion de si obtuvimos datos
+        if row :
+            # A User le entregamos los datos que va a contener
+            user = User(id = row[0], nombre = row[1], usuario = row[2])            
             """
             Con la funcion "ckeck_password" verificamos si
             el hash guardado y la contraseña coinciden
             esta devuelve un True o un False
             """
-            valuePassword = check_password(infoDB[0][1], password)
+            valuePassword = check_password(row[3], password)
             # Si es verdadero
             if valuePassword :
+                login_user(user)
                 # Redireccionamos a la ruta de estadisticas si el loggin fue exitoso 
                 return redirect(url_for('statistic_blueprint.esp32'))  
             else : 
