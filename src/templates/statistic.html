@@ -1,20 +1,21 @@
 {% extends "extends.html" %}
 
 {% block body %}
-<div class="textoBuscar">
-    <div>
-        <h2>¡Hola!</h2>
-    </div>
 
-    <div>
-        <p>Ingrese el ID de su producto para ver sus datos</p>
-    </div>
+    <div class="textoBuscar">
+        <div>
+            <h2>¡Hola {{ current_user.nombre }}!</h2>
+        </div>
+        <div>
+            <p>Ingrese el ID de su producto para ver sus datos</p>
+        </div>
 
-</div>
+    </div>
 
     
     <div>
         <form action="{{ url_for ('statistic_blueprint.esp32') }}", method="POST">
+            <input type= "hidden" name="csrf_token" value="{{ csrf_token() }}">
             <input type="text" name="idEsp32" class="get_esp32" placeholder="ID del Producto:">
             <button name="search">Buscar</button>
         </form>
