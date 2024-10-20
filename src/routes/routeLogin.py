@@ -8,8 +8,10 @@ from src.utils.security import check_password
 # Definicion del Blueprint
 main = Blueprint("login_blueprint", __name__)
 
+# Variable que contiene el inicializador del login
 LoginManagerApp = LoginManager()
 
+# Funcion con la que cargamos los datos del usuario
 @LoginManagerApp.user_loader
 def load_user(id) :
     return User.get_by_id(db, id)
@@ -30,7 +32,7 @@ def login():
         row = cursor.fetchone() #Obtenemos los datos pedidos
         # Comprobacion de si obtuvimos datos
         if row :
-            # A User le entregamos los datos que va a contener
+            # A User le entregamos los datos que va a contener momentaneamente
             user = User(id = row[0], nombre = row[1], usuario = row[2])            
             """
             Con la funcion "ckeck_password" verificamos si

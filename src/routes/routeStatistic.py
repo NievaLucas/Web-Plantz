@@ -1,5 +1,6 @@
 # Componentes que se utilizaran
 from flask import Blueprint, render_template, request, flash
+# from flask_login import login_required, logout_user
 from src.database.conectDB import db
 
 # Definicion del Blueprint
@@ -7,6 +8,7 @@ main = Blueprint("statistic_blueprint", __name__)
 
 # Ruta y los metodos permitidos
 @main.route('', methods = ["GET", "POST"],)
+# @login_required
 def esp32():
     # Si el metodo del formulario es POST
     if request.method == "POST" :    
