@@ -1,6 +1,7 @@
 # Componentes que se utilizaran
 from decouple import config
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
+from flask_login import logout_user
 from flask_wtf import CSRFProtect
 from src.routes import routeLogin, routeRegister, routeStatistic
 from src.routes.routeLogin import LoginManagerApp
@@ -24,6 +25,7 @@ def createApp() :
     # Inicializador de la proteccion
     csrf.init_app(app)
 
+    # Inicializamos el login
     LoginManagerApp.init_app(app)
 
     return app
@@ -37,3 +39,9 @@ def home():
 @app.route('/Nosotros')
 def us():
     return render_template('us.html')
+
+@app.route('/')
+def logout() :
+    # Funcion con la que cerraremos sesion
+    logout_user()
+    return redirect(url_for('home'))
