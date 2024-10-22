@@ -5,29 +5,38 @@
     <meta http-equiv="X-UA-Compatible", content="IE=edge">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Titulo de la apliación web -->
     <title>Plantz</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <!-- Link al archivo del CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"> 
+    <!-- Link a una fuente de texto -->
     <link href="https://fonts.googleapis.com/css2?family=Della+Respira&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
     <div>
+        <!-- Barra de navegación -->
         <nav>
+            <!-- Imagen del Logo -->
             <img class="logo" src="../static/pics/PLantzLogo.png" alt="Logo Plantz">
             <div class="navItems">
-              <a href="{{ url_for('home') }}">HOME</a>
-            <a href="{{ url_for('us') }}">NOSOTROS</a>
-            <a href="{{ url_for('login_blueprint.login') }}">INICIAR SESION</a>  
+                <!-- Anclaje de los links con su respectiva vista -->
+                <a href="{{ url_for('home') }}">HOME</a>
+                <a href="{{ url_for('us') }}">NOSOTROS</a>
+                <a href="{{ url_for('login_blueprint.login') }}">INICIAR SESION</a>  
             </div>
         </nav>
     </div>
-
+    
+    <!--. Bloque en donde residen los bloques de los demas HTML -->
     {% block body %}
     {% endblock %}
     
     <div>
+        <!-- Pie de la aplicación web -->
         <footer>
+            <!-- Texto que contiene el Footer -->
             <p>Hecho por: Nieva Lucas - Miguez Morena - Vera Camila - Sahuanay Erik - Quiroga Lucia</p>
         </footer>
     </div>
