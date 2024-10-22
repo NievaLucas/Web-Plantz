@@ -55,8 +55,8 @@ def home():
 def us():
     return render_template('us.html')
 
-@app.route('/')
+# Ruta con la que cerraremos sesion
+@app.route('/CerrarSesion')
 def logout() :
-    # Funcion con la que cerraremos sesion
-    logout_user()
+    logout_user() # Funcion con la que cerraremos sesion
     return redirect(url_for('home'))
