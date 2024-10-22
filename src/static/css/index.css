@@ -250,17 +250,3 @@ tbody tr:hover {
     margin: 3rem auto;
     border-radius: 15px;
 }
-
-.divError {
-    display: flex;
-    justify-content: center;
-}
-
-.linkError {
-    color: #DAD7CD;
-    background-color: rgb(71, 68, 68);
-    width: 10%;
-    max-width: 800px;
-    margin: 3rem auto;
-    border-radius: 15px;
-}
