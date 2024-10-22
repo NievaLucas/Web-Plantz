@@ -14,11 +14,11 @@ csrf = CSRFProtect()
 
 # Renderizado de error HTTP 401
 def status_401(error) :
-    return render_template('error_401.html')
+    return render_template('errors/error_401.html')
 
 # Renderizado de error HTTP 404
 def status_404(error) :
-    return render_template('error_404.html')
+    return render_template('errors/error_404.html')
 
 # Funcion con todos los inicializadores necesarios
 def createApp() :
