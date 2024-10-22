@@ -12,6 +12,15 @@ app = Flask(__name__, template_folder="templates")
 # Componente con el cual protegeremos de ataques CSRF
 csrf = CSRFProtect()
 
+# Renderizado de error HTTP 401
+def status_401(error) :
+    return render_template('error_401.html')
+
+# Renderizado de error HTTP 404
+def status_404(error) :
+    return render_template('error_404.html')
+
+# Funcion con todos los inicializadores necesarios
 def createApp() :
 
     # Registro de blueprints de cada ruta    
@@ -27,6 +36,12 @@ def createApp() :
 
     # Inicializamos el login
     LoginManagerApp.init_app(app)
+
+    # Registro de error HTTP 401
+    app.register_error_handler(401, status_401)
+
+    # Registro de error HTTP 404
+    app.register_error_handler(404, status_404)
 
     return app
 
