@@ -35,7 +35,7 @@ def registers() :
             cursor.execute(sql, (insertToDB)) # Insertamos la tupla en la base de datos
             db.commit()
             # Redireccionamos a la ruta de estadisticas si el registro fue exitoso
-            return redirect(url_for('statistic_blueprint.esp32'))
+            return redirect(url_for('login_blueprint.login'))
     # Si el metodo es GET renderizamos la plantilla
     else :
         return render_template('/auth/register.html')
