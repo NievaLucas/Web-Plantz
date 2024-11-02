@@ -1,39 +1,46 @@
+<!-- Informacion que contiene la apliación -->
 {% extends "extends.html" %}
-
+<!-- Contenido del body-->
 {% block body %}
-
     <div class="textoBuscar">
         <div>
+            <!-- Saludo al usuario, con la funcion {{ current_user.nombre }} 
+                Obtiene el nombre del usuario logueado -->
             <h2>¡Hola {{ current_user.nombre }}!</h2>
         </div>
         <div>
+            <!-- Instrucción al usuario -->
             <p>Ingrese el ID de su producto para ver sus datos</p>
         </div>
 
     </div>
 
-    
     <div>
+        <!--Formulario para las estadisticas -->
         <form action="{{ url_for ('statistic_blueprint.esp32') }}", method="POST">
+            <!-- Generador de Token CSRF -->
             <input type= "hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <!-- Búsqueda del Código único de cada producto -->
             <input type="text" name="idEsp32" class="get_esp32" placeholder="ID del Producto:">
             <button name="search">Buscar</button>
         </form>
     </div>
 
+    <!-- Funcion con la que buscaremos si hay mensajes FLASH -->
     {% with messages = get_flashed_messages() %} 
         {% if messages %}
             {% for message in messages %}
                 <div class="alertTable alert-success alert-dismissible fade show" role="alert">
                     <strong> {{ message }} </strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             {% endfor %}
         {% endif %}
     {% endwith %}
 
     <div>
+        <!-- Contenido de la tabla donde se muestra la informacion -->
         <table>
+            <!-- Encabezado de la tabla -->
             <thead>
                 <tr>
                     <th>Hora</th>
@@ -41,6 +48,7 @@
                     <th>Humedad</th>
                 </tr>
             </thead>
+            <!-- Cuerpo de la tabla -->
             <tbody>
                 {% for datos in datosEsp32 %}
                 <tr>
@@ -53,7 +61,8 @@
         </table>
     </div>
 
-    <div>
+    <!-- Funcion con la que cerraremos sesion -->
+    <div class="botonLogout">
         <a href="{{ url_for('logout') }}">Cerrar sesion</a>
     </div>
 
