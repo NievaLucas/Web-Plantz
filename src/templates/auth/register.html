@@ -24,18 +24,18 @@
                 <input type="text" name="user" class="form_user" placeholder="Usuario:" required>
                 <!-- Si hay algun error, se lo busca y envia al usuario -->
                 {% for error in form.user.errors %}
-                    <span>{{ error }}</span>
+                    <strong>Minimo 6 caracteres</strong>
                 {% endfor %}
             </div>
             <div>
                 <input type="password" name="password" class="form_password" placeholder="Contraseña" required>
                 <!-- Si hay algun error, se lo busca y envia al usuario -->
-                {% for error in form.user.errors %}
-                    <span>{{ error }}</span>
+                {% for error in form.password.errors %}
+                    <strong>Minimo 6 caracteres</strong>
                 {% endfor %}
             </div>    
             <!-- Submit que carga los datos -->
-            <input type="submit" value="Registrarse">
+            <input class="buttonReg" type="submit" value="Enviar">
         </form>
     </div>
 
