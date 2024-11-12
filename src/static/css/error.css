@@ -1,0 +1,38 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.divError{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    color: #3A5A40;
+    font-family: 'Della Respira', sans-serif;
+    background-color: #3A5A40;
+    padding: 20px;
+    width: 80%;
+    margin: 3% 10%;
+    border-radius: 50px;
+}
+
+.divError img{
+    border-radius: 10px;
+    width: 500px;
+}
+
+.divError .titleError{
+ color: #DAD7CD;
+}
+
+.linkError{
+    background-color: #588157;
+    padding: 20px;
+    border-radius: 50px 0px 50px 0px;
+    color: #DAD7CD;
+    text-decoration: none;
+    font-weight: bold;
+}

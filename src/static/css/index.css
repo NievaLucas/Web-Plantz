@@ -6,11 +6,19 @@
 
 html, body {
     width: 100%; 
+    height: 100%;
+    margin: 0;
     font-family: 'Della Respira', sans-serif;
     background-image: url(../pics/hojas.png);
     background-position: center;
-    background-size: 84.375rem;
+    background-size: 1500px;
     background-repeat: no-repeat;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .logo{
@@ -70,9 +78,9 @@ a{
 }
 
 input{
-    padding: 2%;
     border-radius: .3125rem;
     border: .0625rem solid #588157;
+    padding: 10px;
 }
 
 form button{
@@ -88,8 +96,8 @@ form{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: .625rem;
 }
+
 
 .formularioInicio{
     display: flex;
@@ -115,12 +123,27 @@ form{
     background: radial-gradient(#A3B18A, #3A5A40);
 }
 
-.formularioRegistro form, .formularioRegistro div{
+.formularioRegistro form, .formularioInicio form, .formularioRegistro div{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: end;
-    gap: 1rem;
+    align-items: center;
+    gap: 5px;
+}
+
+.formularioRegistro strong, .formularioRegistro h1{
+    color: #DAD7CD;
+    background-color: #3A5A40;
+    padding: 3px;
+    border-radius: 10px;
+}
+
+.buttonReg{
+    background-color: #3A5A40;
+    padding: 15px;
+    border-radius: 50px 0px 50px 0px;
+    color: #DAD7CD;
+    font-weight: bold;
 }
 
 .formularioInicio h1, .formularioRegistro h1{
@@ -144,7 +167,7 @@ form{
 }
 
 .info h1, h3{
-    padding: 1rem 0rem;
+    padding: 1rem 0.5rem;
     color: #DAD7CD;
     background-color: #588157;
     border-radius: 0rem 3.125rem 0rem 3.125rem;
@@ -160,7 +183,9 @@ form{
     margin: 3%;
 }
 
-
+p{
+    font-size: 20px;
+}
 
 table {
     width: 100%;
@@ -212,21 +237,7 @@ tbody tr:hover {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     position: absolute;
     top: 12.5rem;
-    left: 27rem;
-}
-
-.alertReg {
-    width: 7%;
-    margin: auto;
-    border-radius: 0rem 3.125rem 0rem 3.125rem;
-    background-color: #588157;
-    color: #DAD7CD;
-    padding: 1.25rem 1rem;
-    text-align: center;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 12.5rem;
-    left: 23rem;
+    left: 30rem;
 }
 
 .alertTable {
@@ -249,4 +260,8 @@ tbody tr:hover {
     max-width: 800px;
     margin: 3rem auto;
     border-radius: 15px;
+}
+
+#main-content{
+    flex: 1;
 }
