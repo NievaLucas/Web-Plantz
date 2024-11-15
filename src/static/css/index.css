@@ -262,6 +262,13 @@ tbody tr:hover {
     border-radius: 15px;
 }
 
+.formStatistic{
+display: flex;
+flex-direction: row;
+margin: .3125rem;
+justify-content: center;
+}
+
 #main-content{
     flex: 1;
 }

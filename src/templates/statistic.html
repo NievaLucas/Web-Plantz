@@ -17,7 +17,7 @@
 
     <div>
         <!--Formulario para las estadisticas -->
-        <form action="{{ url_for ('statistic_blueprint.esp32') }}", method="POST">
+        <form class="formStatistic" action="{{ url_for ('statistic_blueprint.esp32') }}", method="POST">
             <!-- Generador de Token CSRF -->
             <input type= "hidden" name="csrf_token" value="{{ csrf_token() }}">
             <!-- Búsqueda del Código único de cada producto -->
