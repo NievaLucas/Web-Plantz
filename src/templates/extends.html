@@ -28,6 +28,7 @@
                 <!-- Si el usuario esta autenticado muestra la siguiente ventana -->
                 {% if current_user.is_authenticated %}
                     <a href="{{ url_for('statistic_blueprint.esp32') }}">ESTADISTICAS</a>
+                    <a href="{{ url_for('update_blueprint.update') }}">USUARIO</a>
                 <!-- Si no lo esta, la barra te lleva al login -->  
                 {% else %}
                     <a href="{{ url_for('login_blueprint.login') }}">INICIAR SESION</a>  
