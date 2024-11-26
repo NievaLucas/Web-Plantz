@@ -1,0 +1,19 @@
+{% extends "extends.html" %}
+
+{% block body %}
+
+<div>
+    <h1>Modificar datos</h1>
+</div>
+
+<div>
+    {% for i in row %}
+    <form action="{{ {{ url_for('update_final_blueprint.update') }} }}" method="POST">
+
+        <input type="text" placeholder="{{ i.0 }}" name="updateNombre">
+
+    </form>
+    {% endfor %}
+</div>
+
+{% endblock %}
