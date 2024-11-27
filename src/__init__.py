@@ -3,7 +3,7 @@ from decouple import config
 from flask import Flask, render_template, redirect, url_for
 from flask_login import logout_user
 from flask_wtf import CSRFProtect
-from src.routes import routeLogin, routeRegister, routeStatistic
+from src.routes import routeLogin, routeRegister, routeStatistic, routeUpdate
 from src.routes.routeLogin import LoginManagerApp
 
 # Declaracion de app
@@ -27,6 +27,7 @@ def createApp() :
     app.register_blueprint(routeRegister.main, url_prefix='/Registro')
     app.register_blueprint(routeLogin.main, url_prefix='/IniciarSesion')
     app.register_blueprint(routeStatistic.main, url_prefix='/Estadisticas')
+    app.register_blueprint(routeUpdate.main, url_prefix='/Usuario')
 
     # Configuracion de llave secreta
     app.secret_key = config('SECRET_KEY')
