@@ -2,6 +2,7 @@
 from flask import Blueprint, render_template, redirect, url_for
 from src.database.conectDB import db
 from src.utils.forms import Registro
+from src.utils.gmail import sendGmail
 from src.utils.security import hash_password
 
 # Definicion del Blueprint
@@ -22,6 +23,9 @@ def registers() :
         username = form.user.data
         # Hasheado de contraseña
         passwordHash = hash_password(form.password.data)
+
+        # Enviamos el correo de bienvenida
+        sendGmail(gmail, name)
 
         cursor = db.cursor()
         # Sentecia SQL con la que ingresamos el nuevo registro a la base de datos
