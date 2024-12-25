@@ -20,6 +20,10 @@ def status_401(error) :
 def status_404(error) :
     return render_template('errors/error_404.html')
 
+# Renderizado de error HTTP 500
+def status_500(error) :
+    return render_template('errors/error_500.html')
+
 # Funcion con todos los inicializadores necesarios
 def createApp() :
 
@@ -39,11 +43,10 @@ def createApp() :
     # Inicializamos el login
     LoginManagerApp.init_app(app)
 
-    # Registro de error HTTP 401
+    # Registro de error HTTP 401, 404 y 500
     app.register_error_handler(401, status_401)
-
-    # Registro de error HTTP 404
     app.register_error_handler(404, status_404)
+    app.register_error_handler(500, status_500)
 
     return app
 
