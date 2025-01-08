@@ -1,7 +1,12 @@
-env/
+# Entornos virtuales
 
-.venv/
+env/
+venv/
+
+# Variables de entorno
 
 .env
+
+# Cache de la aplicacion
 
 __pycache__
