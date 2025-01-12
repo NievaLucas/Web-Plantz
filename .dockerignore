@@ -1,17 +1,23 @@
+# Carpeta de entornos virtuales
 env/
+venv/
 .venv/
 
+# Archivo con variables locales
 .env
 
+# Archivos de funcionamiento
 __pycache__
 *.pyc
 
-*.log
-
+# Archivos de GIT
 .git
 .gitignore
 
+# Archivos de testing
+*.log
 tests/
 
+# Archivos de Docker
 Dockerfile
 .dockerignore
