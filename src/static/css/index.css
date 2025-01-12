@@ -116,7 +116,7 @@ form{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 3% 35%;
+    margin: 3% 35% 1.5% 35%;
     padding: 3.125rem;
     gap: .625rem;
     border-radius: 0rem 50% 0rem 50%;
@@ -136,6 +136,22 @@ form{
     background-color: #3A5A40;
     padding: 3px;
     border-radius: 10px;
+}
+
+.divDelete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1%;
+}
+
+.buttonDelete {
+    background-color: rgb(185, 1, 1);
+    color: #DAD7CD;
+    padding: 12px;
+    border-radius: 15px;
+    font-weight: bold;
+    border: none;
 }
 
 .buttonReg{
@@ -249,17 +265,6 @@ tbody tr:hover {
     padding: .3125rem;
     text-align: center;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.botonLogout {
-    display: flex;
-    justify-content: center;
-    color: #DAD7CD;
-    background-color: #3A5A40;
-    width: 10%;
-    max-width: 800px;
-    margin: 3rem auto;
-    border-radius: 15px;
 }
 
 .formStatistic button{
