@@ -2,46 +2,52 @@
 
 {% block body %}
 
-<div>
-    <!-- Titulo -->
-    <h1>Modificar datos</h1>
-</div>
+<!-- Seccion de la vista -->
+<section class="formularioRegistro">
 
-<div>
-    <!-- Formulario -->
-    {% for i in row %}
-    <form action="{{ url_for('update_blueprint.update') }}" method="POST">
-        <!-- Token contra ataques CSRF -->
-        <input type= "hidden" name="csrf_token" value="{{ csrf_token() }}">
-        <!-- Carga de FlaskForm y sus respectivos input -->
-        {{ form.hidden_tag() }}
-            <input type="text" name="name" class="form_name" placeholder="{{ i.0 }}" required>
-            <input type="text" name="surname" class="form_surname" placeholder="{{ i.1 }}" required>
-            <input type="email" name="gmail" class="form_email" placeholder="{{ i.2 }}" required>
-            <div>
-                <input type="text" name="user" class="form_user" placeholder="{{ i.3 }}" required>
-                <!-- Si hay algun error, se lo busca y envia al usuario -->
-                {% for error in form.user.errors %}
-                    <strong>Minimo 6 caracteres</strong>
-                {% endfor %}
-            </div>
-            <div>
-                <input type="password" name="password" class="form_password" placeholder="Contraseña nueva: " required>
-                <!-- Si hay algun error, se lo busca y envia al usuario -->
-                {% for error in form.password.errors %}
-                    <strong>Minimo 6 caracteres</strong>
-                {% endfor %}
-            </div>    
-            <!-- Submit que carga los datos -->
-            <input class="buttonReg" type="submit" value="Actualizar">
-    </form>
-    {% endfor %}
-
-     <!-- Anclaje para eliminar cuenta del usuario -->
     <div>
-        <a href="{{ url_for('delete_blueprint.delete') }}">Eliminar cuenta</a>
+        <!-- Titulo -->
+        <h1>Modificar datos</h1>
     </div>
 
+    <div>
+        <!-- Formulario -->
+        {% for i in row %}
+        <form action="{{ url_for('update_blueprint.update') }}" method="POST">
+            <!-- Token contra ataques CSRF -->
+            <input type= "hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <!-- Carga de FlaskForm y sus respectivos input -->
+            {{ form.hidden_tag() }}
+                <input type="text" name="name" class="form_name" placeholder="{{ i.0 }}" required>
+                <input type="text" name="surname" class="form_surname" placeholder="{{ i.1 }}" required>
+                <input type="email" name="gmail" class="form_email" placeholder="{{ i.2 }}" required>
+                <div>
+                    <input type="text" name="user" class="form_user" placeholder="{{ i.3 }}" required>
+                    <!-- Si hay algun error, se lo busca y envia al usuario -->
+                    {% for error in form.user.errors %}
+                        <strong>Minimo 6 caracteres</strong>
+                    {% endfor %}
+                </div>
+                <div>
+                    <input type="password" name="password" class="form_password" placeholder="Contraseña nueva: " required>
+                    <!-- Si hay algun error, se lo busca y envia al usuario -->
+                    {% for error in form.password.errors %}
+                        <strong>Minimo 6 caracteres</strong>
+                    {% endfor %}
+                </div>    
+                <!-- Submit que carga los datos -->
+                <input class="buttonReg" type="submit" value="Actualizar">
+        </form>
+        {% endfor %}
+    </div>
+
+</section>
+
+<!-- Anclaje para eliminar cuenta del usuario -->
+<div class="divDelete">
+    <button class="buttonDelete">
+        <a href="{{ url_for('delete_blueprint.delete') }}">Eliminar cuenta</a>
+    </button>
 </div>
 
 {% endblock %}
