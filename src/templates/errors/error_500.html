@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Error 500</title>
+    <!-- Link al icon en la pestaña web -->
+    <link rel="icon" href="../../static/pics/PlantzLogo.png">
+    <!-- Link al archivo del CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/error.css') }}">
 </head>
 <body>
     
     <div class="divError">
-        
         <h1 class="titleError">Error del servidor</h1>
         <a class="linkError" href="{{ url_for('logout') }}">Volver a Home</a>
     </div>
